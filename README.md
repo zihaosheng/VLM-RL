@@ -11,16 +11,15 @@
 
 > **[VLM-RL: A Unified Vision Language Models and Reinforcement Learning Framework for Safe Autonomous Driving](https://arxiv.org/abs/2412.15544)**
 >
-> [Zilin Huang](https://scholar.google.com/citations?user=RgO7ppoAAAAJ&hl=en)<sup>1$\dagger$</sup>,
-> [Zihao Sheng](https://scholar.google.com/citations?user=3T-SILsAAAAJ&hl=en)<sup>1$\dagger$</sup>,
-> [Yansong Qu](https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=hIt7KnUAAAAJ)<sup>
-> 2$\dagger$</sup>,
+> [Zilin Huang](https://scholar.google.com/citations?user=RgO7ppoAAAAJ&hl=en)<sup>1,†</sup>,
+> [Zihao Sheng](https://scholar.google.com/citations?user=3T-SILsAAAAJ&hl=en)<sup>1,†</sup>,
+> [Yansong Qu](https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=hIt7KnUAAAAJ)<sup>2,†</sup>,
 > [Junwei You](https://scholar.google.com/citations?user=wIGL3SQAAAAJ&hl=en)<sup>1</sup>,
 > [Sikai Chen](https://scholar.google.com/citations?user=DPN2wc4AAAAJ&hl=en)<sup>1,✉</sup><br>
 >
 > <sup>1</sup>University of Wisconsin-Madison, <sup>2</sup>Purdue University
 >
-> <sup>$^\dagger$</sup>Equally Contributing First Authors,
+> <sup>†</sup>Equally Contributing First Authors,
 > <sup>✉</sup>Corresponding Author
 <br/>
 
@@ -37,13 +36,16 @@ end-to-end driving policy learning in the CARLA simulator.
 🏁 **VLM-RL** outperforms state-of-the-art baselines, achieving a 10.5% reduction in collision rate, a 104.6% increase in
 route completion rate, and robust generalization to unseen driving scenarios.
 
+
 |                                                       Route 1                                                        |                                                       Route 2                                                        |                                                       Route 3                                                        |                                                       Route 4                                                        |                                                       Route 5                                                        |
 |:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|
-| ![Route 1](https://www.huang-zilin.com/VLM-RL-website/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s1.gif) | ![Route 2](https://www.huang-zilin.com/VLM-RL-website/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s2.gif) | ![Route 3](https://www.huang-zilin.com/VLM-RL-website/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s3.gif) | ![Route 4](https://www.huang-zilin.com/VLM-RL-website/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s4.gif) | ![Route 5](https://www.huang-zilin.com/VLM-RL-website/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s5.gif) |
+| ![Route 1](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s1.gif) | ![Route 2](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s2.gif) | ![Route 3](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s3.gif) | ![Route 4](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s4.gif) | ![Route 5](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s5.gif) |
 
 |                                                       Route 6                                                        |                                                       Route 7                                                        |                                                       Route 8                                                        |                                                       Route 9                                                        |                                                        Route 10                                                        |
 |:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------:|
-| ![Route 6](https://www.huang-zilin.com/VLM-RL-website/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s6.gif) | ![Route 7](https://www.huang-zilin.com/VLM-RL-website/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s7.gif) | ![Route 8](https://www.huang-zilin.com/VLM-RL-website/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s8.gif) | ![Route 9](https://www.huang-zilin.com/VLM-RL-website/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s9.gif) | ![Overtake](https://www.huang-zilin.com/VLM-RL-website/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s10.gif) |
+| ![Route 6](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s6.gif) | ![Route 7](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s7.gif) | ![Route 8](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s8.gif) | ![Route 9](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s9.gif) | ![Overtake](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s10.gif) |
+
+
 
 ## 📚 Table of Contents
 
@@ -84,7 +86,7 @@ pip install -r requirements.txt
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## 🚋 Training
+## 🚋 Training <a name="training"></a>
 
 ### Training VLM-RL
 
