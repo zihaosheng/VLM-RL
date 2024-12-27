@@ -21,12 +21,11 @@
 >
 > <sup>†</sup>Equally Contributing First Authors,
 > <sup>✉</sup>Corresponding Author
-<br/>
+> <br/>
 
 We are currently in the process of organizing our code and preparing it for release.
 
 Stay tuned for our upcoming open-source project on GitHub!
-
 
 ## 💡 Highlights <a name="highlight"></a>
 
@@ -36,7 +35,6 @@ end-to-end driving policy learning in the CARLA simulator.
 🏁 **VLM-RL** outperforms state-of-the-art baselines, achieving a 10.5% reduction in collision rate, a 104.6% increase in
 route completion rate, and robust generalization to unseen driving scenarios.
 
-
 |                                                       Route 1                                                        |                                                       Route 2                                                        |                                                       Route 3                                                        |                                                       Route 4                                                        |                                                       Route 5                                                        |
 |:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|
 | ![Route 1](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s1.gif) | ![Route 2](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s2.gif) | ![Route 3](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s3.gif) | ![Route 4](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s4.gif) | ![Route 5](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s5.gif) |
@@ -45,9 +43,7 @@ route completion rate, and robust generalization to unseen driving scenarios.
 |:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------:|
 | ![Route 6](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s6.gif) | ![Route 7](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s7.gif) | ![Route 8](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s8.gif) | ![Route 9](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s9.gif) | ![Overtake](https://raw.githubusercontent.com/zilin-huang/VLM-RL-website/master/static/videos/CLIP/CLIP_town2_normal/CLIP_town2_normal_s10.gif) |
 
-
-
-## 📚 Table of Contents
+## 📋 Table of Contents
 
 1. [Highlights](#highlight)
 2. [Getting Started](#setup)
@@ -81,8 +77,10 @@ pip install -r requirements.txt
 3. Start a Carla server with the following command. You can ignore this if `start_carla=True`
 
 ```shell
-~/CARLA_0.9.13/CarlaUE4.sh -quality_level=Low -benchmark -fps=15 -RenderOffScreen -prefernvidia -carla-world-port=2000
+./CARLA_0.9.13/CarlaUE4.sh -quality_level=Low -benchmark -fps=15 -RenderOffScreen -prefernvidia -carla-world-port=2000
 ```
+
+If `start_carla=True`, revise the `CARLA_ROOT` in `carla_env/envs/carla_route_env.py` to the path of your CARLA installation.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -93,8 +91,10 @@ pip install -r requirements.txt
 To reproduce the results in the paper, we provide the following training scripts:
 
 ```shell
-python train.py --config=vlm_rl --start_carla --total_timesteps=1_000_000 --port=2000 --device=cuda:0
+python train.py --config=vlm_rl --start_carla --no_render --total_timesteps=1_000_000 --port=2000 --device=cuda:0
 ```
+
+**Note:** On the first run, the script will automatically download the required OpenCLIP pre-trained model. Please wait for the download to complete before proceeding.
 
 #### To accelerate the training process, you can set up multiple CARLA servers running in parallel. 
 <details>
@@ -103,41 +103,44 @@ python train.py --config=vlm_rl --start_carla --total_timesteps=1_000_000 --port
 
 #### Terminal 1:
 ```shell
-python train.py --config=vlm_rl --start_carla --total_timesteps=1_000_000 --port=2000 --device=cuda:0
+python train.py --config=vlm_rl --start_carla --no_render --total_timesteps=1_000_000 --port=2000 --device=cuda:0
 ```
 
 #### Terminal 2:
 ```shell
-python train.py --config=vlm_rl --start_carla --total_timesteps=1_000_000 --port=2005 --device=cuda:1
+python train.py --config=vlm_rl --start_carla --no_render --total_timesteps=1_000_000 --port=2005 --device=cuda:1
 ```
 
 #### Terminal 3:
 ```shell
-python train.py --config=vlm_rl --start_carla --total_timesteps=1_000_000 --port=2010 --device=cuda:2
+python train.py --config=vlm_rl --start_carla --no_render --total_timesteps=1_000_000 --port=2010 --device=cuda:2
 ```
 </details>
 
 To train the VLM-RL model with PPO, run:
 ```shell
-python train.py --config=vlm_rl_ppo --start_carla --total_timesteps=1_000_000 --port=2000 --device=cuda:0
+python train.py --config=vlm_rl_ppo --start_carla --no_render --total_timesteps=1_000_000 --port=2000 --device=cuda:0
 ```
 
 ### Training Baselines
 
 To train baseline models, simply change the `--config` argument to the desired model. For example, to train the TIRL-SAC model, run:
 ```shell
-python train.py --config=tirl_sac --start_carla --total_timesteps=1_000_000 --port=2000 --device=cuda:0
+python train.py --config=tirl_sac --start_carla --no_render --total_timesteps=1_000_000 --port=2000 --device=cuda:0
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## 📊 Evaluation <a name="evaluation"></a>
 
-To evaluate a model, run:
+To evaluate trained model checkpoints, run:
 
 ```shell
 python run_eval.py
 ```
+
+**Note:** that this command will first kill all the existing CARLA servers and then start a new one. 
+Try to avoid running this command while training is in progress.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
