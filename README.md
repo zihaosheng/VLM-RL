@@ -23,9 +23,6 @@
 > <sup>✉</sup>Corresponding Author
 > <br/>
 
-We are currently in the process of organizing our code and preparing it for release.
-
-Stay tuned for our upcoming open-source project on GitHub!
 
 ## 💡 Highlights <a name="highlight"></a>
 
@@ -94,7 +91,7 @@ To reproduce the results in the paper, we provide the following training scripts
 python train.py --config=vlm_rl --start_carla --no_render --total_timesteps=1_000_000 --port=2000 --device=cuda:0
 ```
 
-**Note:** On the first run, the script will automatically download the required OpenCLIP pre-trained model. Please wait for the download to complete before proceeding.
+**Note:** On the first run, the script will automatically download the required OpenCLIP pre-trained model, which may take a few minutes. Please wait for the download to complete before the training begins.
 
 #### To accelerate the training process, you can set up multiple CARLA servers running in parallel. 
 <details>
@@ -129,6 +126,8 @@ To train baseline models, simply change the `--config` argument to the desired m
 python train.py --config=tirl_sac --start_carla --no_render --total_timesteps=1_000_000 --port=2000 --device=cuda:0
 ```
 
+More baseline models can be found in the `CONFIGS` dictionary of `config.py`.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## 📊 Evaluation <a name="evaluation"></a>
@@ -139,7 +138,7 @@ To evaluate trained model checkpoints, run:
 python run_eval.py
 ```
 
-**Note:** that this command will first kill all the existing CARLA servers and then start a new one. 
+**Note:** that this command will first **KILL** all the existing CARLA servers and then start a new one. 
 Try to avoid running this command while training is in progress.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -154,7 +153,7 @@ Special thanks to the following contributors who have helped with this project:
 		<tr>
             <td align="center">
                 <a href="https://github.com/zihaosheng">
-                    <img src="https://avatars.githubusercontent.com/u/48112700?v=4" width="100;" alt="zihaosheng"/>
+                    <img src="https://scholar.googleusercontent.com/citations?view_op=view_photo&user=3T-SILsAAAAJ&citpid=7" width="100;" alt="zihaosheng"/>
                     <br />
                     <sub><b>Zihao Sheng</b></sub>
                 </a>
@@ -167,15 +166,15 @@ Special thanks to the following contributors who have helped with this project:
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/yansong-qu">
-                    <img src="https://avatars.githubusercontent.com/u/92793139?v=4" width="100;" alt="yansongqu"/>
+                <a href="https://scholar.google.com/citations?user=hIt7KnUAAAAJ&hl=en&oi=sra">
+                    <img src="https://scholar.googleusercontent.com/citations?view_op=view_photo&user=hIt7KnUAAAAJ&citpid=2" width="100;" alt="yansongqu"/>
                     <br />
                     <sub><b>Yansong Qu</b></sub>
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/junwei-you">
-                    <img src="https://avatars.githubusercontent.com/u/92793139?v=4" width="100;" alt="junweiyou"/>
+                <a href="https://scholar.google.com/citations?user=wIGL3SQAAAAJ&hl=en">
+                    <img src="https://scholar.google.com/citations/images/avatar_scholar_128.png" width="100;" alt="junweiyou"/>
                     <br />
                     <sub><b>Junwei You</b></sub>
                 </a>
