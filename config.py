@@ -214,6 +214,26 @@ reward_params = {
             "A car",
         ],
     ),
+    "reward_fn_Chen": dict(
+        early_stop=True,
+        min_speed=0.0,
+        max_speed=28.8,
+        target_speed=25.0,
+        max_distance=4.0,
+        max_std_center_lane=0.4,
+        max_angle_center_lane=90,
+        penalty_reward=-10,
+    ),
+    "reward_fn_ASAP": dict(
+        early_stop=True,
+        min_speed=0.0,
+        max_speed=50.0,
+        target_speed=30.0,
+        max_distance=3.0,
+        max_std_center_lane=0.4,
+        max_angle_center_lane=90,
+        penalty_reward=-5,
+    ),
 }
 
 _CONFIG_1 = {
@@ -440,6 +460,35 @@ _CONFIG_revolve_auto = {
     "use_rgb_bev": False,
 }
 
+_CONFIG_Chen = {
+    "algorithm": "SAC",
+    "algorithm_params": algorithm_params["SAC"],
+    "state": states["5"],
+    "vae_model": None,
+    "action_smoothing": 0.75,
+    "reward_fn": "reward_fn_Chen",
+    "reward_params": reward_params["reward_fn_Chen"],
+    "obs_res": (80, 120),
+    "seed": 120,
+    "wrappers": [],
+    "use_roach_bev": False,
+}
+
+_CONFIG_ASAP = {
+    "algorithm": "PPO",
+    "algorithm_params": algorithm_params["PPO"],
+    "state": states["5"],
+    "vae_model": None,
+    "action_smoothing": 0.75,
+    "reward_fn": "reward_fn_ASAP",
+    "reward_params": reward_params["reward_fn_ASAP"],
+    "obs_res": (80, 120),
+    "seed": 120,
+    "wrappers": [],
+    "use_roach_bev": False,
+}
+
+
 CONFIGS = {
     "1": _CONFIG_1,
     "2": _CONFIG_2,
@@ -456,6 +505,8 @@ CONFIGS = {
     "chatscene_ppo": _CONFIG_chatscene_ppo,
     "revolve": _CONFIG_revolve,
     "revolve_auto": _CONFIG_revolve_auto,
+    "Chen": _CONFIG_Chen,
+    "ASAP": _CONFIG_ASAP,
 }
 
 CONFIG = None

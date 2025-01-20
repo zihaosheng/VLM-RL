@@ -318,3 +318,87 @@ def reward_fn5(env):
     return reward
 
 reward_functions["reward_fn5"] = create_reward_fn(reward_fn5)
+
+
+def reward_fn_Chen(env):
+    """
+    A reward function that combines multiple factors:
+    r = 200*r_collision + v_lon + 10*r_fast + r_out - 5*α^2 + 0.2*r_lat - 0.1
+
+    where:
+    - r_collision: -1 if collision occurs, 0 otherwise
+    - v_lon: longitudinal speed of the ego vehicle
+    - r_fast: -1 if speed exceeds threshold (8 m/s), 0 otherwise
+    - r_out: -1 if vehicle leaves the lane, 0 otherwise
+    - α: steering angle in radians, penalized quadratically
+    - r_lat: lateral acceleration term, calculated as r_lat = -|α|*v_lon^2
+    - -0.1: constant term to discourage the vehicle from remaining stationary
+    """
+    # Get vehicle state
+    collision = env.collision_state
+    speed = env.vehicle.get_speed() / 3.6  # Convert from km/h to m/s
+    steering = env.vehicle.get_control().steer  # Steering angle in radians
+
+    # Calculate individual reward components
+    r_collision = -1 if collision else 0
+    v_lon = speed  # Longitudinal speed
+    r_fast = -1 if speed > 8 else 0  # Penalty for exceeding 8 m/s
+    r_out = -1 if env.distance_from_center > 4 else 0  # Penalty for leaving lane (assuming 4m threshold)
+    alpha_squared = -5 * (steering ** 2)  # Quadratic steering penalty
+    r_lat = -abs(steering) * (speed ** 2)  # Lateral acceleration penalty
+    constant_term = -0.1  # Constant penalty
+
+    # Combine all components according to the formula
+    total_reward = (200 * r_collision +
+                    v_lon +
+                    10 * r_fast +
+                    r_out +
+                    alpha_squared +
+                    0.2 * r_lat +
+                    constant_term)
+
+    return total_reward
+
+
+reward_functions["reward_fn_Chen"] = create_reward_fn(reward_fn_Chen)
+
+
+def reward_fn_ASAP(env):
+    """
+    ASAP (Approximate Safe Action Policy) reward function that combines multiple factors:
+    r_t = R_progress + R_destination + R_crash + R_overtaking
+
+    where:
+    - R_progress: 1 reward for every 10 meters of distance completed
+    - R_destination: 1 reward if the agent successfully reaches its destination
+    - R_crash: -5 penalty if the agent collides with another vehicle or road curbs
+    - R_overtaking: 0.1 reward each time the agent overtakes another vehicle
+    """
+    # Get vehicle state
+    collision = env.collision_state
+
+    # Calculate progress reward (1 reward per 10 meters)
+    distance_traveled = env.distance_traveled  # Total distance traveled in meters
+    r_progress = distance_traveled / 10.0  # 1 reward per 10 meters
+
+    # Calculate destination reward
+    r_destination = 1.0 if env.success_state else 0.0
+
+    # Calculate crash penalty
+    r_crash = -5.0 if collision else 0.0
+
+    # Calculate overtaking reward
+    # Note: This requires tracking overtaken vehicles, which might need to be implemented in the environment
+    # For now, we'll use a placeholder based on nearby vehicles
+    r_overtaking = 0.0  # This should be implemented based on environment's vehicle tracking
+
+    # Combine all components according to the formula
+    total_reward = (r_progress +
+                    r_destination +
+                    r_crash +
+                    r_overtaking)
+
+    return total_reward
+
+
+reward_functions["reward_fn_ASAP"] = create_reward_fn(reward_fn_ASAP)
