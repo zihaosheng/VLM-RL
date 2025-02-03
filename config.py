@@ -18,15 +18,15 @@ class CustomCNN(nn.Module):
 
         if n_input_channels == 3:
             self.cnn = nn.Sequential(
-                nn.Conv2d(n_input_channels, 16, kernel_size=5, stride=2),  # 输出尺寸: (16, 58, 38)
+                nn.Conv2d(n_input_channels, 16, kernel_size=5, stride=2),  # (16, 58, 38)
                 nn.ReLU(),
-                nn.Conv2d(16, 32, kernel_size=3, stride=2),  # 输出尺寸: (32, 28, 18)
+                nn.Conv2d(16, 32, kernel_size=3, stride=2),  # (32, 28, 18)
                 nn.ReLU(),
-                nn.Conv2d(32, 64, kernel_size=3, stride=2),  # 输出尺寸: (64, 13, 8)
+                nn.Conv2d(32, 64, kernel_size=3, stride=2),  # (64, 13, 8)
                 nn.ReLU(),
-                nn.Conv2d(64, 128, kernel_size=3, stride=2),  # 输出尺寸: (128, 6, 4)
+                nn.Conv2d(64, 128, kernel_size=3, stride=2),  # (128, 6, 4)
                 nn.ReLU(),
-                nn.Conv2d(128, 256, kernel_size=3, stride=1),  # 输出尺寸: (256, 4, 2)
+                nn.Conv2d(128, 256, kernel_size=3, stride=1),  # (256, 4, 2)
                 nn.ReLU(),
                 nn.Flatten(),
             )
