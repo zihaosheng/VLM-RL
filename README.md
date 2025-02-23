@@ -11,15 +11,15 @@
 
 > **[VLM-RL: A Unified Vision Language Models and Reinforcement Learning Framework for Safe Autonomous Driving](https://arxiv.org/abs/2412.15544)**
 >
-> [Zilin Huang](https://scholar.google.com/citations?user=RgO7ppoAAAAJ&hl=en)<sup>1,†</sup>,
-> [Zihao Sheng](https://scholar.google.com/citations?user=3T-SILsAAAAJ&hl=en)<sup>1,†</sup>,
+> [Zilin Huang](https://scholar.google.com/citations?user=RgO7ppoAAAAJ&hl=en)<sup>1,\*</sup>,
+> [Zihao Sheng](https://scholar.google.com/citations?user=3T-SILsAAAAJ&hl=en)<sup>1,\*</sup>,
 > [Yansong Qu](https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=hIt7KnUAAAAJ)<sup>2,†</sup>,
 > [Junwei You](https://scholar.google.com/citations?user=wIGL3SQAAAAJ&hl=en)<sup>1</sup>,
 > [Sikai Chen](https://scholar.google.com/citations?user=DPN2wc4AAAAJ&hl=en)<sup>1,✉</sup><br>
 >
 > <sup>1</sup>University of Wisconsin-Madison, <sup>2</sup>Purdue University
 >
-> <sup>†</sup>Equally Contributing First Authors,
+> <sup>\*</sup>Equally Contributing First Authors,
 > <sup>✉</sup>Corresponding Author
 > <br/>
 
