@@ -471,7 +471,7 @@ _CONFIG_Chen = {
     "obs_res": (80, 120),
     "seed": 120,
     "wrappers": [],
-    "use_roach_bev": False,
+    "use_rgb_bev": False,
 }
 
 _CONFIG_ASAP = {
@@ -485,7 +485,7 @@ _CONFIG_ASAP = {
     "obs_res": (80, 120),
     "seed": 120,
     "wrappers": [],
-    "use_roach_bev": False,
+    "use_rgb_bev": False,
 }
 
 
