@@ -23,6 +23,9 @@
 > <sup>✉</sup>Corresponding Author
 > <br/>
 
+## 📢 News
+- **2025.08**: 🔥🔥 **VLM-RL** has been accepted to *Transportation Research Part C: Emerging Technologies*!  
+  We will release the model weights on [Hugging Face](https://huggingface.co/zihaosheng/VLM-RL) soon. Stay tuned!
 
 ## 💡 Highlights <a name="highlight"></a>
 
