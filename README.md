@@ -24,7 +24,7 @@
 > <br/>
 
 ## 📢 News
-- **2025.09**: 🔥🔥 The model weights are now available on [Hugging Face](https://huggingface.co/zihaosheng/VLM-RL). Feel free to try them out!
+- **2025.09**: 🔥🔥 The model weights are now available on 🤗 [Hugging Face](https://huggingface.co/zihaosheng/VLM-RL). Feel free to try them out!
 - **2025.08**: 🔥🔥 **VLM-RL** has been accepted to *Transportation Research Part C: Emerging Technologies*!
 
 ## 💡 Highlights <a name="highlight"></a>
